@@ -1,7 +1,21 @@
+/*
+ * @Author: Reny
+ * @Date: 2023-12-27 10:10:15
+ * @LastEditors: Solitario119 1412385393@qq.com
+ * @LastEditTime: 2023-12-27 12:31:59
+ * @FilePath: \electron-template\src\main\index.ts
+ * @Description:
+ */
 import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import log from 'electron-log/main' // error, warn, info, verbose, debug, silly
+import { initLogs } from './services/log'
+
+global.logHome = 'log'
+global.logLevel = 'debug'
+initLogs()
 
 function createWindow(): void {
   // Create the browser window.
@@ -19,6 +33,12 @@ function createWindow(): void {
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
+    if (process.env.NODE_ENV === 'development') {
+      mainWindow.webContents.openDevTools({
+        mode: 'undocked',
+        activate: true
+      })
+    }
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {

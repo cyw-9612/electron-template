@@ -1,6 +1,17 @@
 # electron-template
 
-An Electron application with Vue and TypeScript
+自用 electron 项目模板，基于 [electron-vite](https://cn.electron-vite.org/) 构建。
+
+Electron + Vite + Vue3 + Element-plus + Unocss
+
+引入配置了一些插件及依赖包，如：
+
+- unplugin-auto-import
+- unplugin-vue-components
+- unplugin-icons
+- electron-log
+- sass
+
 
 ## Recommended IDE Setup
 
