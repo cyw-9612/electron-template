@@ -1,14 +1,19 @@
-<!--
- * @Author: Reny
- * @Date: 2023-12-27 10:10:15
- * @LastEditors: Solitario119 1412385393@qq.com
- * @LastEditTime: 2023-12-27 12:20:22
- * @FilePath: \electron-template\src\renderer\src\App.vue
- * @Description: 
--->
-<template></template>
+<!-- <template>
+  <div>
+    <div w-full h-50px bg-red>Menu Bar</div>
+    <div h-500px f-c-c bg-gray>
+      <div class="w-30%" b-1 b-solid h-500px m-r-5px bg-yellow></div>
+      <div class="w-40%" b-1 b-solid h-500px m-r-5px bg-blue></div>
+      <div class="w-30%" b-1 b-solid h-500px bg-green></div>
+    </div>
+  </div>
+</template> -->
 
-<script setup lang="ts">
-</script>
+<template>
+  <TitleBar></TitleBar>
+  <ParameterConfig></ParameterConfig>
+</template>
+
+<script setup lang="ts"></script>
 
 <style></style>

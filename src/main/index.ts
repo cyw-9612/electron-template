@@ -6,9 +6,10 @@
  * @FilePath: \electron-template\src\main\index.ts
  * @Description:
  */
-import { app, shell, BrowserWindow } from 'electron'
+import { app, shell, BrowserWindow,protocol} from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+import { registerCustomProtocols, handleImageProtocol } from './services/protocolHandler'
 import icon from '../../resources/icon.png?asset'
 import log from 'electron-log/main' // error, warn, info, verbose, debug, silly
 import { initLogs } from './services/log'
@@ -16,6 +17,8 @@ import { initLogs } from './services/log'
 global.logHome = 'log'
 global.logLevel = 'debug'
 initLogs()
+
+registerCustomProtocols()
 
 function createWindow(): void {
   // Create the browser window.
@@ -59,6 +62,10 @@ function createWindow(): void {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  // optimizer.registerFramelessWindowIpc() // 注册无边框窗口的IPC事件
+  protocol.handle('image', handleImageProtocol) // 处理'image'协议资源
+  // setIPC.MainFunc(mainWindow) // 注册自定义IPC事件
+
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 
